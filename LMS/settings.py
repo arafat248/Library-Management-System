@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'api',
     'accounts',
     'books',
-    'borrow',
+    'Transections',
     'category'
 ]
 

@@ -1,5 +1,6 @@
 from django.db import models
 from category.models import Category
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Book(models.Model):
@@ -10,9 +11,12 @@ class Book(models.Model):
     descriptions = models.TextField()
     total_copies = models.IntegerField()
     available_copies = models.IntegerField()
-    #image = models.ImageField(upload_to=book/images)
     published_date = models.DateField()
     created_at = models.DateField(auto_now=False)
 
     def __str__(self):
         return self.title
+    
+class BookImage(models.Model):
+    title = models.ForeignKey(Book, on_delete=models.CASCADE)
+    image = CloudinaryField('images', folder='LMS')

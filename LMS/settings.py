@@ -1,5 +1,7 @@
 from pathlib import Path
 from datetime import timedelta
+from decouple import config
+import cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -134,3 +136,12 @@ DJOSER = {
         'current_user': 'users.serializers.UserSerializer'
     }
 }
+
+# Configuration       
+cloudinary.config( 
+    cloud_name = config('Cloud name'),
+    api_key = config('API key'), 
+    api_secret = config('API secret'), 
+    secure=True
+)
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

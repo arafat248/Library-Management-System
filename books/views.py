@@ -7,10 +7,12 @@ class BookViewSet(ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
-class image_view(ModelViewSet):
+class ImageView(ModelViewSet):
     serializer_class = ImageSerializer
     permission_classes = [IsAdminUser]
+    
     def get_queryset(self):
-        return BookImage.objects.filter(title_id=self.kwargs['book_pk'])
+        return BookImage.objects.filter(books_id=self.kwargs['book_pk'])
+
     def perform_create(self, serializer):
-        serializer.save(title_id=self.kwargs['book_pk'])
+        serializer.save(books_id=self.kwargs['book_pk'])

@@ -18,5 +18,5 @@ class Book(models.Model):
         return self.title
     
 class BookImage(models.Model):
-    title = models.ForeignKey(Book, on_delete=models.CASCADE)
+    books = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='images')
     image = CloudinaryField('images', folder='LMS')

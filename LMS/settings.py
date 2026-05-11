@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_yasg',
     "rest_framework",
     'api',
     'accounts',
@@ -75,7 +76,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -132,8 +132,8 @@ SIMPLE_JWT = {
 
 DJOSER = {
     'SERIALIZERS': {
-        'user_create': 'users.serializers.UserCreateSerializer',
-        'current_user': 'users.serializers.UserSerializer'
+        'user_create': 'accounts.serializers.UserCreateSerializer',
+        'current_user': 'accounts.serializers.UserSerializer'
     }
 }
 
@@ -145,3 +145,4 @@ cloudinary.config(
     secure=True
 )
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
